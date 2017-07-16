@@ -38,10 +38,10 @@
 				getInitialState(){
 					return {
 						soundBites: [
-							'Mr. Meeseeks',
-							'Get to the Choppa',
-							'Turn off and on again',
-							'Tea, Earl Gray, hot'
+							{id:0, title: 'Mr. Meeseeks'},
+							{id:1, title: 'Get to the Choppa'},
+							{id:2, title: 'Turn off and on again'},
+							{id:3, title: 'Tea, Earl Gray, hot'}
 						]
 					}
 				},
@@ -49,7 +49,7 @@
 					return <div className='board'>
 						<h1> take your pick </h1>
 						{this.state.soundBites.map((soundBite, i) => {
-							return <BuzzerButton key={i} title={soundBite}> Description for, {soundBite}</BuzzerButton>
+							return <BuzzerButton key={i} title={soundBite.title}> Description for, {soundBite.title}</BuzzerButton>
 						})}
 					</div>
 				}
