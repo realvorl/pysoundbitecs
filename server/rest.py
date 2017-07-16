@@ -13,6 +13,7 @@ urls = (
 
 app = web.application(urls, globals())
 
+
 class os_operations:
 	def playMeOut(fileToPlay):
 		os.system('xmms2 add "mp3/'+fileToPlay+'"')
@@ -21,19 +22,25 @@ class os_operations:
 
 class list_sound_bites:        
     def GET(self):
-	return str(data).replace("u'","'")
+		web.header('Access-Control-Allow-Origin','*')
+		web.header('Content-Type','application/json')
+		resp = json.dumps(data)
+		print resp
+		return resp
 
 class get_sound_bite:
     def GET(self, soundBite):
-	print 'soundBite->', soundBite
-	for child in data:
-		if child['id'] == int(soundBite):
-			print str(child).replace("u'","'")
-			fileToPlay = child['name']
-			os.system('xmms2 add "mp3/'+fileToPlay+'"')
-			os.system('xmms2 play')
-			os.system('xmms2 remove 1')
-			return str(child).replace("u'","'")
+		web.header('Access-Control-Allow-Origin','*')
+		web.header('Content-Type','application/json')
+		for child in data:
+			if child['id'] == int(soundBite):
+				fileToPlay = child['title']
+				os.system('xmms2 add "mp3/'+fileToPlay+'"')
+				os.system('xmms2 play')
+				os.system('xmms2 remove 1')
+				resp = json.dumps(child)
+				print str(resp)
+				return resp
 
 if __name__ == "__main__":
     app.run()
