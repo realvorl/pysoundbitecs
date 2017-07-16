@@ -7,7 +7,7 @@ div#root {
 
 div.bimmel {
 	height: 134px;
-	width: 512px;
+	width: 268px;
 	background-color: #cccccc;
 	margin: 2px 0;
 	padding-right: 4px;
@@ -16,4 +16,10 @@ div.bimmel {
 	text-align: right;
 	background-image: url("play-orange.png");
 	background-repeat: no-repeat;
+}
+
+div.board {
+	height: 100%;
+	background-color: #eeeeee;
+	margin: 2px 0;
 }

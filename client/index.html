@@ -33,20 +33,29 @@
 					</div>
 				}
 			})
-			ReactDOM.render(<div>
-				<BuzzerButton title="MP3 Title 1">
-					Description for first file
-				</BuzzerButton>
-				<BuzzerButton title="MP3 Title 2">
-					Description for second file
-				</BuzzerButton>
-				<BuzzerButton title="MP3 Title 3">
-					Description for third file
-				</BuzzerButton>
-				<BuzzerButton title="MP3 Title 4">
-					Description for forth file
-				</BuzzerButton>
-			</div>,
+
+			var SwitchBoard = React.createClass({
+				getInitialState(){
+					return {
+						soundBites: [
+							'Mr. Meeseeks',
+							'Get to the Choppa',
+							'Turn off and on again',
+							'Tea, Earl Gray, hot'
+						]
+					}
+				},
+				render(){
+					return <div className='board'>
+						<h1> take your pick </h1>
+						{this.state.soundBites.map((soundBite, i) => {
+							return <BuzzerButton key={i} title={soundBite}> Description for, {soundBite}</BuzzerButton>
+						})}
+					</div>
+				}
+			})
+
+			ReactDOM.render(<SwitchBoard samples={11}/>,
 			document.getElementById('root'))
 
 		</script>
