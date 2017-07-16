@@ -13,15 +13,35 @@
 		
 		<script type="text/babel">
 			class BuzzerButton extends React.Component {
+				play() {
+					alert("playing")
+				}
+
 				render(){
 					return <div className="bimmel">
-						<h1>{this.props.title}</h1>
-						<p> the description goes here </p>
+						<h3>{this.props.title}</h3>
+						<p>{this.props.children}</p>
+						<span>
+							<button onClick={this.play}>play</button>
+							<span> x </span>
+						</span>
 					</div>
 				}	
 			}
-
-			ReactDOM.render(<BuzzerButton title="MP3 Title"/>,
+			ReactDOM.render(<div>
+				<BuzzerButton title="MP3 Title 1">
+					Description for first file
+				</BuzzerButton>
+				<BuzzerButton title="MP3 Title 2">
+					Description for second file
+				</BuzzerButton>
+				<BuzzerButton title="MP3 Title 3">
+					Description for third file
+				</BuzzerButton>
+				<BuzzerButton title="MP3 Title 4">
+					Description for forth file
+				</BuzzerButton>
+			</div>,
 			document.getElementById('root'))
 
 		</script>
