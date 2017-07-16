@@ -4,12 +4,12 @@
 
 ### For the server part:
 
-> http://bit.ly/python-rest
+	http://bit.ly/python-rest
 
 in case you missed it, you will need `web.py`
 
-> sudo apt install python-pip
-> pip install web.py
+	sudo apt install python-pip
+	pip install web.py
 
 This web service, once started, will parse:  `sound_bites.js` and use it as a source for serving information bout the resource that is being played back.
 
@@ -23,8 +23,8 @@ After that you run it using:
 	
 The actual MP3's are played using xmms2, here is how to install and read about it:
 
->  sudo apt install xmms2 
->  man xmms2
+	sudo apt install xmms2 
+	man xmms2
 
 ### For the client part:
 
