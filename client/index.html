@@ -12,14 +12,14 @@
 		<div id="root"></div>
 		
 		<script type="text/babel">
-			var BuzzerButton = React.createClass({
+			class BuzzerButton extends React.Component {
 				render(){
 					return <div className="bimmel">
 						<h1> Title goes here </h1>
 						<p> the description goes here </p>
 					</div>
-				}
-			})
+				}	
+			}
 
 			ReactDOM.render(<BuzzerButton/>,
 			document.getElementById('root'))
