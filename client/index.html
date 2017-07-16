@@ -15,13 +15,13 @@
 			class BuzzerButton extends React.Component {
 				render(){
 					return <div className="bimmel">
-						<h1> Title goes here </h1>
+						<h1>{this.props.title}</h1>
 						<p> the description goes here </p>
 					</div>
 				}	
 			}
 
-			ReactDOM.render(<BuzzerButton/>,
+			ReactDOM.render(<BuzzerButton title="MP3 Title"/>,
 			document.getElementById('root'))
 
 		</script>
