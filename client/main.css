@@ -1,24 +1,27 @@
-body,
-html {
-	height: 100%;
-}
 
 div.bimmel {
-	height: 134px;
-	width: 268px;
-	background-color: #cccccc;
-	margin: 2px 0;
-	padding-right: 4px;
-	position: relative;
-	cursor: -webkit-grab;
-	box-shadow: 5px 5px 15px 0 rgba(0,0,0,.2);
-	text-align: right;
-	background-image: url("play-orange.png");
-	background-repeat: no-repeat;
+    height: 128px;
+    background-color: #cccccc;
+    margin: 13px;
+    padding-right: 4px;
+    position: relative;
+    cursor: -webkit-grab;
+    box-shadow: 5px 5px 15px 0 rgba(0,0,0,.2);
+    text-align: right;
+    overflow: auto;
+    background-image: url(play-orange.png);
+    background-repeat: no-repeat;
 }
 
 div.board {
-	height: 100%;
+	column-count: 3;
+	column-gap: 10px;
 	background-color: #eeeeee;
 	margin: 2px 0;
+}
+
+span.counter {
+	text-decoration-color: darkblue;
+    font-family: fantasy;
+    font-weight: 100;
 }

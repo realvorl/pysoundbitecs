@@ -29,12 +29,11 @@
 				},
 
 				render() {
-					return <div className="bimmel">
+					return <div className="bimmel" onClick={this.handlePlay}>
 						<h3>{this.props.title}</h3>
 						<p>{this.props.children}</p>
 						<span>
-							<button onClick={this.handlePlay}>play</button>
-							<span> {this.state.count} </span>
+							<span className="counter"> #{this.state.count} </span>
 						</span>
 					</div>
 				}
@@ -57,7 +56,6 @@
 				},
 				render(){
 					return <div className='board'>
-						<h1> take your pick </h1>
 						{this.state.soundBites.map((soundBite, i) => {
 							return <BuzzerButton key={i} order={soundBite.id} title={soundBite.title}> {soundBite.title}</BuzzerButton>
 						})}
