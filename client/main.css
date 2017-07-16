@@ -6,10 +6,11 @@ div#root {
 }
 
 div.bimmel {
-	height: 132px;
+	height: 134px;
 	width: 512px;
 	background-color: #cccccc;
 	margin: 2px 0;
+	padding-right: 4px;
 	cursor: -webkit-grab;
 	box-shadow: 5px 5px 15px 0 rgba(0,0,0,.2);
 	text-align: right;

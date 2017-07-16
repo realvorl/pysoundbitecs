@@ -12,22 +12,27 @@
 		<div id="root"></div>
 		
 		<script type="text/babel">
-			class BuzzerButton extends React.Component {
-				play() {
-					alert("playing")
-				}
+			var BuzzerButton = React.createClass({
+				getInitialState() {
+					return {count: 0}
+				},
 
-				render(){
+				handlePlay() {
+					this.setState({count: (this.state.count + 1) })
+					//alert("playing on the server side")
+				},
+
+				render() {
 					return <div className="bimmel">
 						<h3>{this.props.title}</h3>
 						<p>{this.props.children}</p>
 						<span>
-							<button onClick={this.play}>play</button>
-							<span> x </span>
+							<button onClick={this.handlePlay}>play</button>
+							<span> {this.state.count} </span>
 						</span>
 					</div>
-				}	
-			}
+				}
+			})
 			ReactDOM.render(<div>
 				<BuzzerButton title="MP3 Title 1">
 					Description for first file
