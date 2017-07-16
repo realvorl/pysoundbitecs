@@ -3,8 +3,8 @@
 	<head>
 		<script src="https://unpkg.com/react@15/dist/react.js"></script>
 		<script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js">
-		</script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js"></script>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="main.css" />
 		<title>Bite Me!</title>
 	</head>
@@ -36,6 +36,10 @@
 
 			var SwitchBoard = React.createClass({
 				getInitialState(){
+					var bThis = this;
+					var sBites = $.getJSON("http://192.168.178.34:8080/soundBites",function(data){
+					 bThis.setState({soundBites: data})
+					})
 					return {
 						soundBites: [
 							{id:0, title: 'Mr. Meeseeks'},
