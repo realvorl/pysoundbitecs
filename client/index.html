@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://unpkg.com/react@15/dist/react.js"></script>
+		<script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js">
+		</script>
+		<link rel="stylesheet" type="text/css" href="main.css" />
+		<title>Bite Me!</title>
+	</head>
+	<body>
+		<div id="root"></div>
+		
+		<script type="text/babel">
+			var BuzzerButton = React.createClass({
+				render(){
+					return <div className="bimmel">
+						<h1> Title goes here </h1>
+						<p> the description goes here </p>
+					</div>
+				}
+			})
+
+			ReactDOM.render(<BuzzerButton/>,
+			document.getElementById('root'))
+
+		</script>
+	</body>
+</html>
