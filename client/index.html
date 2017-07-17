@@ -10,7 +10,6 @@
 	</head>
 	<body>
 		<div id="root"></div>
-		
 		<script type="text/babel">
 		var soundBiteServer = "http://localhost:8080"
 
@@ -32,6 +31,7 @@
 					return <div className="bimmel" onClick={this.handlePlay}>
 						<h3>{this.props.title}</h3>
 						<p>{this.props.children}</p>
+						<img src={"img/"+this.props.img} alt=":o"></img>
 						<span>
 							<span className="counter"> #{this.state.count} </span>
 						</span>
@@ -57,7 +57,7 @@
 				render(){
 					return <div className='board'>
 						{this.state.soundBites.map((soundBite, i) => {
-							return <BuzzerButton key={i} order={soundBite.id} title={soundBite.title}> {soundBite.title}</BuzzerButton>
+							return <BuzzerButton key={i} order={soundBite.id} title={soundBite.title} img={soundBite.img}> {soundBite.title}</BuzzerButton>
 						})}
 					</div>
 				}

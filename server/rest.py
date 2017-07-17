@@ -24,7 +24,7 @@ def pullListing(fileList):
 	mp3JsonList = []
 	n=0
 	for x in fileList:
-		mp3JsonList.append(anItem(n, x, x+".jpg").__dict__)
+		mp3JsonList.append(anItem(n, x, x+".gif").__dict__)
 		n+=1
 	return mp3JsonList
 
