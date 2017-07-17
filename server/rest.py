@@ -3,44 +3,53 @@ import os
 import web
 import json
 
-with open('sound_bites.js') as data_file:    
-    data = json.load(data_file)
+mp3List = os.listdir("mp3")
+
 
 urls = (
-    '/soundBites', 'list_sound_bites',
-    '/soundBite/(.*)', 'get_sound_bite'
+	'/soundBites', 'list_sound_bites',
+	'/soundBite/(.*)', 'get_sound_bite'
 )
 
 app = web.application(urls, globals())
 
 
-class os_operations:
-	def playMeOut(fileToPlay):
-		os.system('xmms2 add "mp3/'+fileToPlay+'"')
-		os.system('xmms2 play')
-		os.system('xmms2 remove 1')
+class anItem:
+	def __init__(self, id, title, img):
+		self.id = id
+		self.title = title
+		self.img = img
 
-class list_sound_bites:        
-    def GET(self):
+def pullListing(fileList):
+	mp3JsonList = []
+	n=0
+	for x in fileList:
+		mp3JsonList.append(anItem(n, x, x+".jpg").__dict__)
+		n+=1
+	return mp3JsonList
+
+class list_sound_bites:
+	def GET(self):
 		web.header('Access-Control-Allow-Origin','*')
 		web.header('Content-Type','application/json')
-		resp = json.dumps(data)
-		print resp
+		mp3JsonList=pullListing(os.listdir("mp3"))
+		resp = json.dumps(mp3JsonList)
 		return resp
 
 class get_sound_bite:
-    def GET(self, soundBite):
+	def GET(self, soundBite):
 		web.header('Access-Control-Allow-Origin','*')
 		web.header('Content-Type','application/json')
-		for child in data:
+		mp3JsonList=pullListing(os.listdir("mp3"))
+		for child in mp3JsonList:
 			if child['id'] == int(soundBite):
+				print child
 				fileToPlay = child['title']
 				os.system('xmms2 add "mp3/'+fileToPlay+'"')
 				os.system('xmms2 play')
 				os.system('xmms2 remove 1')
 				resp = json.dumps(child)
-				print str(resp)
 				return resp
 
 if __name__ == "__main__":
-    app.run()
+	app.run()
