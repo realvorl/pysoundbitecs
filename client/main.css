@@ -6,11 +6,21 @@ div.bimmel {
     padding-right: 4px;
     position: relative;
     cursor: -webkit-grab;
+    font-family: Arial 12px bold;
     box-shadow: 5px 5px 15px 0 rgba(0,0,0,.2);
     text-align: right;
     overflow: auto;
     background-image: url(play-orange.png);
     background-repeat: no-repeat;
+    border-radius: 12px;
+
+}
+
+div.bimmel:hover{
+    background-color: #dddddd;
+        -ms-transform: scale(1.02, 1.02); /* IE 9 */
+    -webkit-transform: scale(1.02, 1.02); /* Safari */
+    transform: scale(1.02, 1.02);
 }
 
 div.board {
@@ -18,6 +28,7 @@ div.board {
 	column-gap: 10px;
 	background-color: #eeeeee;
 	margin: 2px 0;
+    padding: 20px;
 }
 
 span.counter {
