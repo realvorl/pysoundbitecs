@@ -4,12 +4,13 @@ import web
 import json
 
 urls = (
+	'/','index',
+	'/images/(.*)', 'images', #this is where the image folder is located....
 	'/soundBites', 'list_sound_bites',
 	'/soundBite/(.*)', 'get_sound_bite'
 )
 
-app = web.application(urls, globals())
-
+render = web.template.render('templates/')
 
 class anItem:
 	def __init__(self, id, title, img):
@@ -17,16 +18,41 @@ class anItem:
 		self.title = title
 		self.img = img
 
+class index:
+	def GET(self):
+		return render.index()
+
+class images:
+    def GET(self,name):
+        ext = name.split(".")[-1] # Gather extension
+
+        cType = {
+            "png":"images/png",
+            "jpg":"images/jpeg",
+            "gif":"images/gif",
+            "ico":"images/x-icon"            }
+
+        if name in os.listdir('images'):  # Security
+            web.header("Content-Type", cType[ext]) # Set the Header
+            return open('images/%s'%name,"rb").read() # Notice 'rb' for reading images
+        else:
+            raise web.notfound()
+
 def pullListing(fileList, imgList):
 	mp3JsonList = []
+	extensions = [".gif", ".jpg",".png"]
 	n=0
-	for x in fileList:
-		print (x+".gif")
-		print ((x+".gif") in imgList)
-		if (x+".gif") in imgList:
-			mp3JsonList.append(anItem(n, x, x+".gif").__dict__)
+	foundImg = ""
+	for fileName in fileList:
+		for ext in extensions:
+			if (fileName+ext) in imgList:
+				foundImg = ext
+				break
+		if (foundImg == ""): 
+			mp3JsonList.append(anItem(n, fileName, "default.png").__dict__)
 		else:
-			mp3JsonList.append(anItem(n, x, "default.png").__dict__)
+			mp3JsonList.append(anItem(n, fileName, fileName+ext).__dict__)
+			foundImg = ""		
 		n+=1
 	return mp3JsonList
 
@@ -34,7 +60,7 @@ class list_sound_bites:
 	def GET(self):
 		web.header('Access-Control-Allow-Origin','*')
 		web.header('Content-Type','application/json')
-		mp3JsonList=pullListing(os.listdir("mp3"), os.listdir("img"))
+		mp3JsonList=pullListing(os.listdir("mp3"), os.listdir("images"))
 		resp = json.dumps(mp3JsonList)
 		return resp
 
@@ -42,7 +68,7 @@ class get_sound_bite:
 	def GET(self, soundBite):
 		web.header('Access-Control-Allow-Origin','*')
 		web.header('Content-Type','application/json')
-		mp3JsonList=pullListing(os.listdir("mp3"), os.listdir("img"))
+		mp3JsonList=pullListing(os.listdir("mp3"), os.listdir("images"))
 
 		for child in mp3JsonList:
 			if child['id'] == int(soundBite):
@@ -55,4 +81,5 @@ class get_sound_bite:
 				return resp
 
 if __name__ == "__main__":
+	app = web.application(urls, globals())
 	app.run()

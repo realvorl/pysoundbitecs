@@ -5,15 +5,59 @@
 		<script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js"></script>
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="main.css" />
+		<style type="text/css">
+			div.bimmel {
+			    height: 128px;
+			    background-color: #cccccc;
+			    margin: 13px;
+			    padding-right: 4px;
+			    position: relative;
+			    cursor: -webkit-grab;
+			    font-family: Arial 12px bold;
+			    box-shadow: 5px 5px 15px 0 rgba(0,0,0,.2);
+			    text-align: right;
+			    overflow: auto;
+			    background-image: url(images/play-orange.png);
+			    background-repeat: no-repeat;
+			    border-radius: 12px;
+			}
+
+			div.bimmel:hover{
+			    background-color: #dddddd;
+			        -ms-transform: scale(1.02, 1.02); /* IE 9 */
+			    -webkit-transform: scale(1.02, 1.02); /* Safari */
+			    transform: scale(1.02, 1.02);
+			}
+
+			div.board {
+				column-count: 3;
+				column-gap: 10px;
+				background-color: #eeeeee;
+				margin: 2px 0;
+			    padding: 20px;
+			}
+
+			span.counter {
+				text-decoration-color: darkblue;
+			    font-family: fantasy;
+			    font-weight: 100;
+			}
+
+			img {
+			    left: 12px;
+			    top: 37px;
+			    position: absolute;
+			    width: 58px;
+			    border-radius: 60px;
+			}
+		</style>
 		<title>Bite Me!</title>
 	</head>
 	<body>
 		<div id="root"></div>
 		<script type="text/babel">
-		var soundBiteServer = "http://localhost:8080"
+		var soundBiteServer = "http://192.168.178.27:8080"
 		//var soundBiteServer = "http://10.90.212.26:8080"
-
 			var BuzzerButton = React.createClass({
 				getInitialState() {
 					return {count: 0}
@@ -22,8 +66,8 @@
 				handlePlay() {
 					var bThis = this;
 					var biteId = bThis.props.order;
-					var url = soundBiteServer + "/soundBite/"+biteId;
-					$.getJSON(url, function(data) {
+					var url = "/soundBite/"+biteId;
+					jQuery.getJSON(url, function(data) {
 					 bThis.setState({count: (bThis.state.count + 1) })
 					})
 				},
@@ -43,7 +87,7 @@
 			var SwitchBoard = React.createClass({
 				getInitialState(){
 					var bThis = this;
-					var sBites = $.getJSON(soundBiteServer+"/soundBites", function(data) {
+					var sBites = jQuery.getJSON("/soundBites", function(data) {
 					 bThis.setState({soundBites: data})
 					})
 					return {
