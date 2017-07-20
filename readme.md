@@ -51,11 +51,11 @@ If all went well you will be able to access / play the mp3's by opening your bro
 
 [http://localhost:8080](URL)
 
-Adding mp3's to /mp3 folder will add new buttons:
+Adding mp3's to `/mp3` folder will add new buttons:
 
-    server/images/I'm Mr. Meeseeks, look at me!.mp3
+    mp3/images/I'm Mr. Meeseeks, look at me!.mp3
 
-Adding images with the same name as the mp3 to wich it belongs will display it on the button instead of the fallback image:
+Adding an image with the same name as the mp3 to wich it belongs, will display it on the button instead of the fallback image:
 
     server/images/I'm Mr. Meeseeks, look at me!.mp3.jpg
 
