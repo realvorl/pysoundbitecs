@@ -26,11 +26,11 @@
 div.bimmel {
     height: 128px;
     width: 360px;
-    display: inline-table;
     background-color: #cccccc;
     margin: 13px;
     padding-right: 4px;
     position: relative;
+    display: inline-table;
     cursor: -webkit-grab;
     font-family: Arial 12px bold;
     box-shadow: 5px 5px 15px 0 rgba(0,0,0,.2);
@@ -49,6 +49,7 @@ div.bimmel:hover{
 }
 
 div.board {
+  display: inline-table;
   column-count: 3;
   column-gap: 10px;
   background-color: #eeeeee;
