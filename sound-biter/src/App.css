@@ -1,0 +1,71 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+div.bimmel {
+    height: 128px;
+    width: 360px;
+    display: inline-table;
+    background-color: #cccccc;
+    margin: 13px;
+    padding-right: 4px;
+    position: relative;
+    cursor: -webkit-grab;
+    font-family: Arial 12px bold;
+    box-shadow: 5px 5px 15px 0 rgba(0,0,0,.2);
+    background-image: url(images/play-orange.png);
+    text-align: right;
+    overflow: auto;
+    background-repeat: no-repeat;
+    border-radius: 12px;
+}
+
+div.bimmel:hover{
+    background-color: #dddddd;
+        -ms-transform: scale(1.02, 1.02); /* IE 9 */
+    -webkit-transform: scale(1.02, 1.02); /* Safari */
+    transform: scale(1.02, 1.02);
+}
+
+div.board {
+  column-count: 3;
+  column-gap: 10px;
+  background-color: #eeeeee;
+  margin: 2px 0;
+    padding: 20px;
+}
+
+span.counter {
+  text-decoration-color: darkblue;
+    font-family: fantasy;
+    font-weight: 100;
+}
+
+img {
+    left: 12px;
+    top: 37px;
+    position: absolute;
+    width: 58px;
+    border-radius: 60px;
+}
