@@ -24,7 +24,13 @@ var SwitchBoard = React.createClass({
   render(){
     return <div className='board'>
       {this.state.soundBites.map((soundBite, i) => {
-        return <BuzzerButton key={i} order={soundBite.id} title={soundBite.title} img={soundBite.img}> {soundBite.title}</BuzzerButton>
+        return <BuzzerButton 
+         key={i} 
+         order={soundBite.id} 
+         title={soundBite.title} 
+         img={soundBite.img}> 
+          {soundBite.title}
+              </BuzzerButton>
       })}
     </div>
   }

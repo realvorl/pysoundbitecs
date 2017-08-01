@@ -20,16 +20,21 @@ var BuzzerButton = React.createClass({
      bThis.setState({count: (bThis.state.count + 1) })
     })
   },
+  handleRemove() {
+    console.log("removing" + this.props.title);
+    this.setState({off: true});
+  },  
 
   render() {
+    if (this.state.off) return null;
     return (
       <Draggable>
-      <div className="bimmel" onClick={this.handlePlay}>
+      <div className="bimmel" >
       <h3>{this.props.title}</h3>
-      <p>{this.props.children}</p>
-      <img src={defaultImg} alt={this.props.img}></img>
+      <img src={defaultImg} onClick={this.handlePlay}></img>
       <span>
         <span className="counter"> #{this.state.count} </span>
+        <button onClick={this.handleRemove}> x </button>
       </span>
     </div>
     </Draggable>
