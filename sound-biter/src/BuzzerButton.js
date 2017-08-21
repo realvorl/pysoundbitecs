@@ -1,11 +1,11 @@
 import React from 'react';
 import logo from './logo.svg'
-import defaultImg from './images/default.png'
 import Draggable from 'react-draggable'
 import jquery from 'jquery'
 import './App.css'
 
 var soundBiteServer = "http://localhost:8080"
+var defaultImg = 'default.png'
 
 var BuzzerButton = React.createClass({
   getInitialState() {
@@ -23,7 +23,7 @@ var BuzzerButton = React.createClass({
   handleRemove() {
     console.log("removing" + this.props.title);
     this.setState({off: true});
-  },  
+  },
 
   render() {
     if (this.state.off) return null;
@@ -31,7 +31,7 @@ var BuzzerButton = React.createClass({
       <Draggable>
       <div className="bimmel" >
       <h3>{this.props.title}</h3>
-      <img src={defaultImg} onClick={this.handlePlay}></img>
+      <img src={"http://localhost:8000/" + this.props.img} onClick={this.handlePlay}></img>
       <span>
         <span className="counter"> #{this.state.count} </span>
         <button onClick={this.handleRemove}> x </button>

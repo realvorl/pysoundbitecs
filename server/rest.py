@@ -5,7 +5,6 @@ import json
 
 urls = (
 	'/','index',
-	'/images/(.*)', 'images', #this is where the image folder is located....
 	'/soundBites', 'list_sound_bites',
 	'/soundBite/(.*)', 'get_sound_bite'
 )
@@ -22,22 +21,6 @@ class index:
 	def GET(self):
 		return render.index()
 
-class images:
-    def GET(self,name):
-        ext = name.split(".")[-1] # Gather extension
-
-        cType = {
-            "png":"images/png",
-            "jpg":"images/jpeg",
-            "gif":"images/gif",
-            "ico":"images/x-icon"            }
-
-        if name in os.listdir('images'):  # Security
-            web.header("Content-Type", cType[ext]) # Set the Header
-            return open('images/%s'%name,"rb").read() # Notice 'rb' for reading images
-        else:
-            raise web.notfound()
-
 def pullListing(fileList, imgList):
 	mp3JsonList = []
 	extensions = [".gif", ".jpg",".png"]
@@ -48,11 +31,11 @@ def pullListing(fileList, imgList):
 			if (fileName+ext) in imgList:
 				foundImg = ext
 				break
-		if (foundImg == ""): 
+		if (foundImg == ""):
 			mp3JsonList.append(anItem(n, fileName, "default.png").__dict__)
 		else:
 			mp3JsonList.append(anItem(n, fileName, fileName+ext).__dict__)
-			foundImg = ""		
+			foundImg = ""
 		n+=1
 	return mp3JsonList
 

@@ -1,3 +1,4 @@
 server/rest.pyc
 *.log
 *.pyc
+server/rest.pyc
