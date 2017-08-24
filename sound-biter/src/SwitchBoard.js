@@ -1,11 +1,9 @@
 import React from 'react';
-import logo from './logo.svg'
 import jquery from 'jquery'
 import './App.css'
 import BuzzerButton from './BuzzerButton'
 
 var soundBiteServer = "http://localhost:8080"
-//var soundBiteServer = "http://10.90.212.26:8080"
 var SwitchBoard = React.createClass({
   getInitialState(){
     var bThis = this;

@@ -31,7 +31,7 @@ var BuzzerButton = React.createClass({
       <Draggable>
       <div className="bimmel" >
       <h3>{this.props.title}</h3>
-      <img src={"http://localhost:8000/" + this.props.img} onClick={this.handlePlay}></img>
+      <img src={"http://localhost:8080/static/images/" + this.props.img} onClick={this.handlePlay}></img>
       <span>
         <span className="counter"> #{this.state.count} </span>
         <button onClick={this.handleRemove}> x </button>
