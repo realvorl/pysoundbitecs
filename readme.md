@@ -60,7 +60,14 @@ if your default browser does not pop up, you can access:
 [http://localhost:3000](URL)
 
 
-###How To Use:
+### How To Use:
+
+Start the server
+
+Start the client
+ 
+Add your mp3's and images here:
+
 
 Adding mp3's to `/mp3` folder will add new buttons:
 
